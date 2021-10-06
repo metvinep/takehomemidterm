@@ -13,8 +13,26 @@ library(dplyr)
 
 
 ```{r}
-Pop.data <- read.csv("https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/asrh/cc-est2019-agesex-39.csv")
+pop.data <- read.csv("https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/asrh/cc-est2019-agesex-39.csv")
 
-view(Pop.data)
+
+```
+
+```{r}
+pop.data1 <- pop.data %>%
+  filter(YEAR == "3") %>%
+  mutate("POPESTIMATEYR3"= POPESTIMATE) %>%
+  select("CTYNAME", "POPESTIMATEYR3")
+
+pop.data2 <- pop.data %>%
+  filter(YEAR == "12") %>% 
+  mutate("POPESTIMATEYR12" = POPESTIMATE) %>%
+  select("CTYNAME", "POPESTIMATEYR12")
+
+pop.change <- merge(pop.data1, pop.data2, by.x="CTYNAME", by.y="CTYNAME")
+
+
+
+
 ```
 
