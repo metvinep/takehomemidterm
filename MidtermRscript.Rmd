@@ -36,3 +36,28 @@ pop.change <- merge(pop.data1, pop.data2, by.x="CTYNAME", by.y="CTYNAME")
 
 ```
 
+
+**Total Population % change between years 3 and 12**
+
+```{r}
+pop.change1 <- pop.change %>%
+  mutate("Pop.Change" = POPESTIMATEYR12 - POPESTIMATEYR3) %>%
+  mutate("Perc.Change" = Pop.Change/POPESTIMATEYR3*100) %>%
+  select("CTYNAME", "Perc.Change")
+
+view(pop.change1) 
+
+pop.change1 %>%
+  arrange(desc(Perc.Change)) %>%
+  slice(1:3)
+
+pop.change1 %>%
+  arrange(desc(Perc.Change)) %>%
+  slice(86:88)
+```
+
+
+```{r}
+
+```
+
