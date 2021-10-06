@@ -1,0 +1,20 @@
+---
+title: "Take-Home_midterm"
+author: "Elliot Metviner"
+date: "10/6/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(dplyr)
+```
+
+
+```{r}
+Pop.data <- read.csv("https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/asrh/cc-est2019-agesex-39.csv")
+
+view(Pop.data)
+```
+
