@@ -77,6 +77,7 @@ OA.change <- pop.change %>%
   mutate("Perc.Change" = Pop.Change/POPESTIMATEYR3*100) %>%
   select("CTYNAME", "Perc.Change")
 
+
 view(pop.change1) 
 
 OA.change %>%
@@ -93,7 +94,7 @@ OA.change %>%
 ```{r}
 YA.data1 <- pop.data %>%
   filter(YEAR == "3") %>%
-  mutate("POPESTIMATEYR3"= POPESTIMATE) %>%
+  mutate("POPESTIMATEYR3"= AGE1519_TOT) %>%
   select("CTYNAME", "POPESTIMATEYR3")
 
 YA.data2 <- pop.data %>%
@@ -101,7 +102,7 @@ YA.data2 <- pop.data %>%
   mutate("POPESTIMATEYR12" = POPESTIMATE) %>%
   select("CTYNAME", "POPESTIMATEYR12")
 
-pop.change <- merge(pop.data1, pop.data2, by.x="CTYNAME", by.y="CTYNAME")
+YA.change <- merge(YA.data1, YA.data2, by.x="CTYNAME", by.y="CTYNAME")
 
 ```
 
