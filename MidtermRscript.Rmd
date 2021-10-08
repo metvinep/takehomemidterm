@@ -62,7 +62,7 @@ pop.change1 %>%
 ```{r}
 OA.data <- pop.data %>%
   filter(YEAR == "3") %>%
-  mutate("POPESTIMATEYR3"= AGE65PLUS_TOT) %>%
+  mutate("POPESTIMATEYR3"= AGE65PLUS_TOT + AGE59) %>%
   select("CTYNAME", "POPESTIMATEYR3")
 
 OA.data2 <- pop.data %>%
@@ -91,18 +91,37 @@ OA.change %>%
 ```
 
 
+
+
 ```{r}
 YA.data1 <- pop.data %>%
   filter(YEAR == "3") %>%
-  mutate("POPESTIMATEYR3"= AGE1519_TOT) %>%
+  mutate("POPESTIMATEYR3"= UNDER5_TOT + AGE59_TOT + AGE1014_TOT + AGE1519_TOT) %>%
   select("CTYNAME", "POPESTIMATEYR3")
 
 YA.data2 <- pop.data %>%
   filter(YEAR == "12") %>% 
-  mutate("POPESTIMATEYR12" = POPESTIMATE) %>%
+  mutate("POPESTIMATEYR12" = UNDER5_TOT + AGE59_TOT + AGE1014_TOT + AGE1519_TOT) %>%
   select("CTYNAME", "POPESTIMATEYR12")
 
 YA.change <- merge(YA.data1, YA.data2, by.x="CTYNAME", by.y="CTYNAME")
 
+
+YA.change <- YA.change %>%
+  mutate("Pop.Change" = POPESTIMATEYR12 - POPESTIMATEYR3) %>%
+  mutate("Perc.Change" = Pop.Change/POPESTIMATEYR3*100) %>%
+  select("CTYNAME", "Perc.Change")
+
+
+YA.change %>%
+  arrange(desc(Perc.Change)) %>%
+  slice(1:3)
+
+YA.change %>%
+  arrange(desc(Perc.Change)) %>%
+  slice(86:88)
+
 ```
 
+
+**When performing the above analysis, what I have learned about ohios population is that although there is overall population growth in certain counties, it appears that Ohio is increasing in older adults (over 65) rather than younger adults (under the age of 20). Not only are younger adults under the age of 20 having slower growth rates in counties with growth, there is also a larger decline in younger adults among the bottom three counties, and Older Adults there is not a county that has any ammount of decline in younger adults. This can be from one of two reasons, younger adults are migrating out of Ohio and older adults can be migrating into Ohio, or more older adults have transitioned into Older adults during the span of those years, and younger adults have transitioned out of the under 20 population range. This could be linked to how the United States has been having lower birth rate, and an increase of people transitioning to older Adults from the Baby Boomer Generation**
