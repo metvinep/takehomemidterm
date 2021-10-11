@@ -33,7 +33,7 @@ pop.change <- merge(pop.data1, pop.data2, by.x="CTYNAME", by.y="CTYNAME")
 
 
 
-
+## Created two data frames for both years, then merged the two datas together, and grouped by county name to make future code easier, re named pop estimate to the relative population estimate for the year to also help with future code. 
 ```
 
 
@@ -54,6 +54,8 @@ pop.change1 %>%
 pop.change1 %>%
   arrange(desc(Perc.Change)) %>%
   slice(86:88)
+
+## Calculated % population change, and mutated the data set so it only included only percent change for the individual counties.
 ```
 
 
@@ -78,7 +80,6 @@ OA.change <- pop.change %>%
   select("CTYNAME", "Perc.Change")
 
 
-view(pop.change1) 
 
 OA.change %>%
   arrange(desc(Perc.Change)) %>%
@@ -124,4 +125,4 @@ YA.change %>%
 ```
 
 
-**When performing the above analysis, what I have learned about ohios population is that although there is overall population growth in certain counties, it appears that Ohio is increasing in older adults (over 65) rather than younger adults (under the age of 20). Not only are younger adults under the age of 20 having slower growth rates in counties with growth, there is also a larger decline in younger adults among the bottom three counties, and Older Adults there is not a county that has any ammount of decline in younger adults. This can be from one of two reasons, younger adults are migrating out of Ohio and older adults can be migrating into Ohio, or more older adults have transitioned into Older adults during the span of those years, and younger adults have transitioned out of the under 20 population range. This could be linked to how the United States has been having lower birth rate, and an increase of people transitioning to older Adults from the Baby Boomer Generation**
+**When performing the above analysis, what I have learned about ohios population is that although there is overall population growth in certain counties, it appears that Ohio is increasing in older adults (over 65) rather than younger adults (under the age of 20). Not only are younger adults under the age of 20 having slower growth rates in counties with growth, there is also a larger decline in younger adults among the bottom three counties, and Older Adults there is not a county that has any ammount of decline in Older Adults. This can be from one of two reasons, younger adults are migrating out of Ohio and older adults can be migrating into Ohio, or more older adults have transitioned into Older adults during the span of those years, and younger adults have transitioned out of the under 20 population range. This could be linked to how the United States has been having lower birth rate, and an increase of people transitioning to older Adults from the Baby Boomer Generation**
