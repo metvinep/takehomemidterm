@@ -1,0 +1,48 @@
+---
+title: "Midterm2"
+author: "Elliot Metviner"
+date: "11/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+sim_test <- function(i) {
+  length <- 1       ## Set length count to start at 1
+  vec <- c()        ## created new vector 
+    while(i != 1) {   ## run code when value is greater than 1
+      vec[length] = i     ## input length into the vector 
+      length <- length + 1  ## increase length by 1 for each additional calculation
+      if(i%%2 == 0){
+        i <- i/2   ## divide i by 2 when number is even
+      } else {
+          i <- i*3 + 1 }  ## multiply by 3 and add one when value is odd
+    }
+  length     # output length
+}
+```
+
+```{r}
+out <-c()  ## created empty vector
+for (i in 1:10000) {
+  out[i] <- sim_test(i)   ## for loop to run all values 1-10000
+}
+out
+
+```
+
+```{r}
+hist <- hist(out)
+hist
+```
+
+```{r}
+summary <- summary(out)
+summary
+```
+
