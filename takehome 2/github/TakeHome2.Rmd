@@ -26,29 +26,95 @@ sim_test <- function(number) {
   }
   length
 }
-```
 
-```{r}
 sim_test(3)
 ```
 
+
 ```{r}
-sim_test <- function(number) {
+out <- for(i in 1:number){
+  sim_test(10)
+}
+
+out
+```
+
+
+
+```{r}
+sim_test <- function() {
   length <- 0
-  while(number !=1){
-    if(number%%2 ==0) {
-    number<- number/2
-    print(number)
+  for(i in 1:10)
+  while(i !=1){
+    if(i%%2 ==0) {
+    i<- i/2
     length <- length +1
   }
-  else if(number %%2 !=0) {
-    number <- (number*3)+1
-    print(number)
+  else if(i %%2 !=0) {
+    i <- (i*3)+1
     length <- length + 1
   }
+    print(i)
   }
   length
 }
+
 ```
 
-`
+
+
+```{r}
+sim_test2 <- function() {
+  x <- c(i)
+  for(i in 1:10){
+  while(i !=1){
+    if(i%%2 ==0) {
+    i<- i/2
+    x <- c(x,i)
+  }
+  else if(i %%2 !=0) {
+    i <- (i*3)+1
+    x <- c(x,i)
+  }
+  }
+  }
+  x
+}
+
+
+```
+
+
+```{r}
+sim_test2()
+```
+
+
+```{r}
+sim_test3 <- function() {
+  x <- c(i)
+  while(i !=1){
+    if(i%%2 ==0) {
+    i<- i/2
+    x <- c(x,i)
+  }
+  else if(i %%2 !=0) {
+    i <- (i*3)+1
+    x <- c(x,i)
+  }
+  }
+  x
+}
+
+```
+
+
+
+```{r}
+
+out <- rep(1)
+for (i in 1:10){
+  out[i]<- sim_test3
+}
+```
+
