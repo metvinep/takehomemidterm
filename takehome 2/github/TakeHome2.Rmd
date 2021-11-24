@@ -7,20 +7,22 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 
 ```{r}
 sim <- function(i) {
   length <- 1
-  vec <- c()
+  v <- c()
     while(i != 1) {
-      vec[length] = i
+      v[length] = i
       length <- length + 1
       if(i%%2 == 0){
         i <- i/2
       } else {
-          i <- i*3 + 1 }
+          i <- i*3 + 1 
+          }
     }
   length
 }
@@ -42,4 +44,16 @@ hist(out)
 ```{r}
 summary(out)
 ```
+
+**The distribution of the graph is roughly normal but is skewed to the right. this matches the summary statstic that has a minimum of 1 and a maximum of 262.0, with a median of 74.**
+
+
+```{r}
+
+```
+
+
+**I was unable to tabulate but I bet that even numbers occured more frequently than odd numbers (other than one). I know this because when we encounter an odd number we make it even for the next value, and when we divide a number there is a chance it can be odd but also can be even.  **
+
+
 
